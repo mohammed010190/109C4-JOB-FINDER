@@ -86,7 +86,7 @@ function renderHistory(){
 function renderJobs(){
  $("savedCount").textContent=state.jobs.length+" وظيفة محفوظة";
  if(!state.jobs.length){$("savedJobs").innerHTML='<div class="empty">لا توجد وظائف محفوظة. أضف وظيفة من رابط الإعلان الأصلي.</div>';return}
- $("savedJobs").innerHTML=state.jobs.map((j,i)=>`<article class="saved-card"><h3>${esc(j.title)}</h3><p>${esc(j.company||"الشركة غير محددة")} • ${esc(j.location||"الموقع غير محدد")}</p><p>تاريخ الإعلان: ${j.date?new Date(j.date).toLocaleDateString("ar-SA"):"غير محدد"}</p>${j.notes?`<p>${esc(j.notes)}</p>`:""}<div class="saved-actions"><a class="btn primary" href="${esc(j.url)}" target="_blank" rel="noopener">الذهاب للإعلان ↗</a><button class="btn secondary" data-delete="${i}">حذف</button></div></article>`).join("");
+ $("savedJobs").innerHTML=state.jobs.map((j,i)=>`<article class="saved-card"><h3>${esc(j.title)}</h3><p>${esc(j.company||"الشركة غير محددة")} • ${esc(j.location||"الموقع غير محدد")}</p><p>تاريخ الإعلان: ${j.date?new Date(j.date).toLocaleDateString("ar-SA"):"غير محدد"}</p>${j.email?`<p class="email-chip">✉ التقديم عبر: ${esc(j.email)}</p>`:""}${j.notes?`<p>${esc(j.notes)}</p>`:""}<div class="saved-actions">${j.url?`<a class="btn primary" href="${esc(j.url)}" target="_blank" rel="noopener">الذهاب للإعلان ↗</a>`:""}${j.email?`<button class="btn secondary" data-email-apply="${i}">تقديم عبر الإيميل ✉</button>`:""}<button class="btn secondary" data-delete="${i}">حذف</button></div></article>`).join("");
  $("savedJobs").querySelectorAll("[data-delete]").forEach(b=>b.onclick=()=>{state.jobs.splice(+b.dataset.delete,1);saveLocal();renderJobs();cloudSave();toast("تم حذف الوظيفة.")});
 }
 function stats(){$("historyStat").textContent=state.history.length;$("jobsStat").textContent=state.jobs.length;$("connectionStat").textContent=state.user?"متصل":"محلي"}
@@ -108,8 +108,8 @@ $("dataEntry").onclick=()=>{$("jobQuery").value="Data Entry";groupIndex=0;render
 $("addJob").onclick=()=>{$("jobForm").reset();$("jobDialog").showModal()};
 $("closeDialog").onclick=()=>$("jobDialog").close();
 $("jobForm").onsubmit=e=>{
- e.preventDefault();const url=urlOK($("manualUrl").value.trim());if(!url){toast("أدخل رابطًا صحيحًا يبدأ بـ https://");return}
- state.jobs.unshift({id:Date.now().toString(),title:$("manualTitle").value.trim(),company:$("manualCompany").value.trim(),location:$("manualLocation").value.trim(),url,date:$("manualDate").value,notes:$("manualNotes").value.trim()});
+ e.preventDefault();const rawUrl=$("manualUrl").value.trim(),url=rawUrl?urlOK(rawUrl):"",email=$("manualEmail").value.trim();if(rawUrl&&!url){toast("رابط الإعلان غير صحيح.");return}if(!url&&!/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(email)){toast("أدخل رابط الإعلان أو بريد التوظيف الصحيح.");return}
+ state.jobs.unshift({id:Date.now().toString(),title:$("manualTitle").value.trim(),company:$("manualCompany").value.trim(),location:$("manualLocation").value.trim(),url,email,date:$("manualDate").value,notes:$("manualNotes").value.trim()});
  saveLocal();renderJobs();cloudSave();$("jobDialog").close();toast("تم حفظ الوظيفة.");
 };
 
