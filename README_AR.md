@@ -1,4 +1,3 @@
-[README_AR.md](https://github.com/user-attachments/files/34737676/README_AR.md)
 # 109C4 JOB FINDER
 
 موقع ويب عربي/إنجليزي للبحث عن الوظائف من مصادر متعددة، وحفظ سجل البحث والوظائف والسيرة الذاتية محليًا.
