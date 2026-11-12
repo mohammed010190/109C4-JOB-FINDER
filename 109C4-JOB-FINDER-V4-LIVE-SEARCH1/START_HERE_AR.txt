@@ -1,0 +1,14 @@
+اسم المستودع: 109C4-JOB-FINDER
+
+1) افتح github.com وسجّل الدخول.
+2) اضغط + ثم New repository.
+3) Repository name: 109C4-JOB-FINDER.
+4) اختر Public ثم Create repository.
+5) ارفع كل ملفات المشروع ومجلداته إلى جذر المستودع.
+6) Settings → Pages → Build and deployment → GitHub Actions.
+7) افتح Actions وانتظر نجاح Deploy 109C4 Job Finder to GitHub Pages.
+8) خذ الرابط الحقيقي من Settings → Pages.
+
+إذا صعب رفع المجلد المخفي .github من المتصفح، استخدم GitHub Desktop وارفع مجلد المشروع كاملًا. لا تشارك كلمة مرور GitHub أو رموز الدخول.
+
+V4: تم تحويل البحث إلى جلب وظائف فعلية من API عام. ارفع جميع الملفات إلى جذر مستودع GitHub واستبدل النسخة السابقة. المصدر قد لا يغطي كل وظائف السعودية، وتاريخ النشر والبريد يظهران فقط إذا وفّرهما الإعلان.

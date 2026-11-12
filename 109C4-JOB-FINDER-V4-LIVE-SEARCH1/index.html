@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#081326"><meta name="description" content="109C4 Job Finder - ابحث ونظّم طلباتك الوظيفية وتابع التقديم.">
+<title>109C4 | Job Finder</title>
+<link rel="manifest" href="./manifest.webmanifest"><link rel="icon" href="./assets/icon.svg">
+<link rel="stylesheet" href="./styles.css"><script src="./app.js" defer></script>
+</head>
+<body>
+<div class="app">
+<header class="topbar">
+<a class="brand" href="#" data-page="search"><span class="logo">109</span><span><b>109C4</b><small>JOB FINDER</small></span></a>
+<nav><button data-page="search" class="active">البحث عن وظائف</button><button data-page="saved">المحفوظات</button><button data-page="account">حسابي</button></nav>
+<button class="menu" id="menuBtn">☰</button>
+</header>
+<div class="mobile-nav" id="mobileNav" hidden><button data-page="search">البحث</button><button data-page="saved">المحفوظات</button><button data-page="account">حسابي</button></div>
+<main>
+<section class="page active" id="page-search">
+<div class="hero"><div><span class="eyebrow">فرصك المهنية في مكان واحد</span><h1>وظيفتك القادمة<br><em>تبدأ من هنا.</em></h1><p>ابحث عن إعلانات منشورة فعلًا، صفِّ النتائج حسب المدينة وتاريخ النشر، واحفظ الوظائف وتابع طلباتك.</p><div class="hero-tags"><span>✓ عربي وإنجليزي</span><span>✓ وظائف حضورية وعن بُعد</span><span>✓ متابعة التقديم</span><span>✓ حفظ سيرتك الذاتية</span></div></div><div class="hero-art"><div class="hero-tile"><b>109C4</b><strong>JOB<br>FINDER</strong><small>Find your next step</small></div></div></div>
+<section class="panel search-panel">
+<div class="section-head"><div><small>ابدأ البحث</small><h2>ما الوظيفة التي تبحث عنها؟</h2></div><span class="live">● جلب إعلانات فعلية عند توفرها</span></div>
+<div class="query-row"><input id="jobQuery" type="search" placeholder="اكتب المسمى بالعربي أو الإنجليزي — مثال: Accountant"><button class="btn secondary" id="openPicker">☷ اختر المسمى</button></div>
+<div class="quick-searches"><span>عمليات بحث سريعة:</span><button type="button" data-quick="Accountant">محاسب</button><button type="button" data-quick="Data Entry">مدخل بيانات</button><button type="button" data-quick="HR Specialist">موارد بشرية</button><button type="button" data-quick="Customer Service">خدمة عملاء</button><button type="button" data-quick="Administrative Assistant">إداري</button></div>
+<div id="picker" class="picker" hidden><div class="picker-head"><b>اختر المجال والمسمى الوظيفي</b><button id="closePicker" class="x">×</button></div><div class="picker-layout"><div id="pickerGroups" class="picker-groups"></div><div id="pickerTitles" class="picker-titles"></div></div></div>
+<div class="filter-title"><b>⚙ تصفية الوظائف</b><span>حدد المنطقة وتاريخ الإعلان وطريقة الترتيب</span></div>
+<div class="filters">
+<label>المنطقة<select id="region"><option value="SA_ALL">كل مناطق السعودية</option><option value="EAST">المنطقة الشرقية</option><option>الدمام</option><option>الخبر</option><option>الظهران</option><option>الجبيل</option><option>القطيف</option><option>الأحساء</option><option>الرياض</option><option>جدة</option><option>مكة المكرمة</option><option>المدينة المنورة</option><option>القصيم</option><option>تبوك</option><option>أبها</option><option>جازان</option><option>حائل</option><option>نجران</option><option value="WORLD">كل العالم</option></select></label>
+<label>تاريخ الإعلان<select id="date"><option value="1">اليوم / آخر 24 ساعة</option><option value="7" selected>آخر 7 أيام</option><option value="30">آخر 30 يومًا</option><option value="0">كل التواريخ</option></select></label>
+<label>ترتيب النتائج<select id="sort"><option value="newest">الأحدث أولًا</option><option value="oldest">الأقدم أولًا</option></select></label>
+<label>نمط العمل<select id="workMode"><option value="any">الكل</option><option value="remote">عن بُعد</option><option value="hybrid">هجين</option><option value="onsite">من مقر الشركة</option></select></label>
+<label>نوع الوظيفة<select id="jobType"><option value="any">كل الأنواع</option><option value="full">دوام كامل</option><option value="part">دوام جزئي</option><option value="contract">عقد / مؤقت</option><option value="intern">تدريب</option></select></label>
+</div>
+<div class="actions"><button class="btn primary" id="searchBtn">⌕ ابحث عن الوظائف الفعلية</button><button class="btn ghost" id="saveSearch">＋ حفظ البحث</button></div>
+<p class="note">سيتم جلب الإعلانات المتاحة من مصدر وظائف مباشر، ثم تطبيق فلاتر المدينة والتاريخ والترتيب داخل 109C4. قد تختلف التغطية حسب المصدر.</p>
+</section>
+<section id="results" class="results" hidden>
+<div class="section-head"><div><small>نتائج الإعلانات الفعلية</small><h2 id="resultsTitle">نتائج البحث</h2><p id="resultsMeta"></p></div><button class="link-btn" id="newSearch">بحث جديد ↺</button></div>
+<div id="liveStatus" class="live-status" role="status">جاهز للبحث</div>
+<div id="liveJobs" class="live-jobs"></div>
+<details class="source-fallback"><summary>مصادر إضافية للبحث اليدوي</summary><p class="note">تفتح هذه الروابط بحثًا خارجيًا؛ لا تعتبر نتائج مجمعة داخل 109C4.</p><div id="sourceCards" class="source-grid"></div></details>
+<div class="notice"><a href="https://devglobaljobs.com/developers" target="_blank" rel="noopener">Powered by Dev Global Jobs</a> — تُعرض الوظائف مع رابط الإعلان الأصلي لدى المصدر. التغطية ليست شاملة لكل الشركات.</div>
+</section>
+<div class="lower-grid"><section class="panel compact"><div class="section-head"><div><small>سجلّك</small><h2>عمليات البحث الأخيرة</h2></div><button id="clearHistory" class="link-btn">مسح</button></div><div id="historyList" class="history-list"></div></section><section class="panel compact tip"><small>نصيحة بحث</small><h2>جرّب أكثر من مسمى</h2><p>لو تبحث عن إدخال البيانات، جرّب Data Entry Clerk وData Entry Operator وData Processor لنتائج أوسع.</p><button class="btn secondary" id="dataEntry">جرّب مسميات إدخال البيانات</button></section></div>
+</section>
+
+<section class="page" id="page-saved"><div class="page-title"><small>مساحة عملك</small><h1>المحفوظات</h1><p>احفظ الوظائف التي وجدتها في المواقع الخارجية وتابع التقديم عليها.</p></div><div class="tracker-stats">
+<div class="tracker-stat"><small>إجمالي المحفوظ</small><b id="statSaved">0</b></div>
+<div class="tracker-stat"><small>تم التقديم</small><b id="statApplied">0</b></div>
+<div class="tracker-stat"><small>مقابلات</small><b id="statInterview">0</b></div>
+<div class="tracker-stat"><small>عروض وظيفية</small><b id="statOffer">0</b></div>
+</div>
+<div class="toolbar"><span id="savedCount">0 وظيفة محفوظة</span><div class="toolbar-actions"><input id="savedSearch" type="search" placeholder="ابحث في المحفوظات..."><select id="savedStatusFilter"><option value="all">كل الحالات</option><option value="saved">محفوظة</option><option value="applied">تم التقديم</option><option value="interview">مقابلة</option><option value="offer">عرض وظيفي</option><option value="rejected">اعتذار</option></select><button class="btn primary" id="addJob">＋ إضافة وظيفة</button></div></div><div id="savedJobs" class="saved-grid"></div></section>
+
+<section class="page" id="page-account"><div class="page-title"><small>إعداداتك</small><h1>حسابي</h1><p>احفظ سيرتك الذاتية واضبط المزامنة السحابية والبريد الإلكتروني.</p></div>
+<div class="account-grid">
+<section class="panel account-card"><h2>◎ الحساب والمزامنة</h2><div id="authStatus" class="status warning">المزامنة السحابية غير مفعّلة. البحث والحفظ المحلي يعملان الآن.</div><label>البريد الإلكتروني<input id="email" type="email" placeholder="name@example.com"></label><label>كلمة المرور<input id="password" type="password" placeholder="6 أحرف على الأقل"></label><div class="actions"><button class="btn primary" id="login">تسجيل الدخول</button><button class="btn secondary" id="register">إنشاء حساب</button></div><button class="btn google" id="google">G المتابعة باستخدام Google</button><button class="link-btn" id="logout" hidden>تسجيل الخروج</button>
+<details><summary>إعداد Firebase للمزامنة السحابية</summary><p>أنشئ Firebase Web App وفعّل Email/Password وGoogle وأنشئ Firestore، ثم ألصق إعدادات Web App. لا تضع كلمة مرور أو OAuth Client Secret.</p><textarea id="firebaseConfig" rows="6" dir="ltr" placeholder='{"apiKey":"...","authDomain":"...","projectId":"...","appId":"..."}'></textarea><button class="btn primary" id="saveFirebase">حفظ وتهيئة Firebase</button><a href="https://console.firebase.google.com/" target="_blank" rel="noopener">فتح Firebase Console ↗</a></details></section>
+<section class="panel account-card"><h2>▤ السيرة الذاتية</h2><p>حفظ نسخة على هذا الجهاز بصيغة PDF أو DOC أو DOCX (8 MB كحد أقصى).</p><input type="file" id="cvFile" accept=".pdf,.doc,.docx"><div id="cvStatus" class="status">لم يتم اختيار ملف بعد.</div><button class="btn secondary" id="downloadCv" disabled>فتح / تنزيل السيرة الذاتية</button><button class="link-btn" id="deleteCv" hidden>حذف السيرة الذاتية</button><p class="note">يحفظ الملف محليًا في المتصفح. التخزين السحابي للملفات يحتاج إعداد Storage وصلاحيات مناسبة.</p></section>
+<section class="panel account-card"><h2>✉ مساعد التقديم عبر Gmail</h2><label>إيميل جهة التوظيف<input id="mailTo" type="email" placeholder="careers@company.com"></label><label>عنوان الرسالة<input id="mailSubject" placeholder="Application for Accountant Position"></label><label>نص الرسالة<textarea id="mailBody" rows="5" placeholder="Dear Hiring Team,&#10;&#10;I would like to apply for..."></textarea></label><button class="btn primary" id="gmailDraft">فتح مسودة التقديم في Gmail</button><p class="note">يفتح مسودة جاهزة في Gmail. أرفق سيرتك الذاتية يدويًا قبل الإرسال، ثم راجع الرسالة وأرسلها بنفسك.</p></section>
+<section class="panel account-card"><h2>⚙ بيانات البرنامج</h2><div class="stat"><span>عمليات البحث</span><b id="historyStat">0</b></div><div class="stat"><span>الوظائف المحفوظة</span><b id="jobsStat">0</b></div><div class="stat"><span>حالة الاتصال</span><b id="connectionStat">محلي</b></div><button class="btn danger" id="clearData">مسح بيانات هذا المتصفح</button><p class="note">يمسح السجل والمحفوظات والسيرة الذاتية من هذا المتصفح فقط.</p></section>
+</div></section>
+</main>
+<footer><b>109C4 JOB FINDER</b><span>© 2026 — منصة مستقلة لتنظيم البحث والتقديم. تواريخ النشر تُعرض عند توفر مصدر موثوق لها.</span></footer>
+</div>
+
+<dialog id="jobDialog"><form id="jobForm"><div class="dialog-head"><h2>حفظ وظيفة</h2><button type="button" id="closeDialog" class="x">×</button></div><label>المسمى الوظيفي *<input id="manualTitle" required></label><label>الشركة<input id="manualCompany"></label><label>المدينة / المنطقة<input id="manualLocation"></label><label>رابط الإعلان أو التقديم<input id="manualUrl" type="url" placeholder="https://..."></label><label>بريد التوظيف (إذا كان التقديم بالإيميل)<input id="manualEmail" type="email" placeholder="careers@company.com"></label><label>تاريخ نشر الإعلان<input id="manualDate" type="date"></label><label>الراتب (اختياري)<input id="manualSalary" placeholder="مثال: 5,000 - 7,000 ريال"></label><label>نوع العمل<select id="manualWorkMode"><option value="">غير محدد</option><option>حضوري</option><option>هجين</option><option>عن بُعد</option></select></label><label>حالة التقديم<select id="manualStatus"><option value="saved">محفوظة</option><option value="applied">تم التقديم</option><option value="interview">مقابلة</option><option value="offer">عرض وظيفي</option><option value="rejected">اعتذار</option></select></label><label>ملاحظات<textarea id="manualNotes" rows="3"></textarea></label><button class="btn primary" type="submit">حفظ الوظيفة</button></form></dialog>
+<div id="toast" role="status"></div>
+</body></html>
