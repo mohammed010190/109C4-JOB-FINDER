@@ -1,4 +1,4 @@
-[README_AR.md](https://github.com/user-attachments/files/34719758/README_AR.md)
+[README_AR.md](https://github.com/user-attachments/files/34737676/README_AR.md)
 # 109C4 JOB FINDER
 
 موقع ويب عربي/إنجليزي للبحث عن الوظائف من مصادر متعددة، وحفظ سجل البحث والوظائف والسيرة الذاتية محليًا.
@@ -36,3 +36,13 @@
 - أنشئ Firestore Database.
 - الصق Firebase Web App config في صفحة حسابي.
 - استخدم قواعد وصول خاصة بالمستخدم، ولا تفتح القراءة والكتابة للجميع.
+
+
+## V4 — البحث الفعلي عن الوظائف
+- أضيف ربط مباشر مع Dev Global Jobs Jobs API: `https://devglobaljobs.com/api/v1/jobs`.
+- لا يحتاج مفتاح API، ويقبل `limit`, `offset`, `country`, `search`.
+- تُعرض النتائج الفعلية مع رابط الإعلان الأصلي وتاريخ النشر عند توفره.
+- يُطبّق فلتر المدينة/المنطقة والتاريخ ونمط العمل ونوع الوظيفة محليًا على الحقول المتاحة.
+- تظهر عبارة Powered by Dev Global Jobs ورابط كل إعلان إلى صفحة المصدر كما تشترط وثائق المصدر.
+- قد تكون التغطية السعودية محدودة؛ هذه ليست قاعدة بيانات شاملة لكل إعلانات الشركات. لا يتم اختلاق بريد أو تاريخ غير موجود.
+- مصدر API وشروط الاستخدام: https://devglobaljobs.com/developers
